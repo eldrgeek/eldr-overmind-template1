@@ -7,17 +7,17 @@ import { useApp } from "../overmind";
 
 // eslint-disable-next-line no-unused-vars
 const Nothing = () => {
-  return "The currrent module is nothing";
+    return "The currrent module is nothing";
 };
 
-const CurrentModule = (Element) => {
-  const rootElement = document.getElementById("root");
-  render(
-    <Provider value={app}>
-      <Element />
-    </Provider>,
-    rootElement
-  );
+const CurrentModule = (Element: any) => {
+    const rootElement = document.getElementById("root");
+    render(
+        <Provider value={app}>
+            <Element />
+        </Provider>,
+        rootElement
+    );
 };
 export { CurrentModule, React, useApp, app };
 export default CurrentModule;

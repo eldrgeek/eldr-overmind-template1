@@ -5,40 +5,40 @@ import { Action, AsyncAction } from "overmind";
 //   state.newTodoTitle = title;
 // };
 export const setMessage: Action<string, void> = (
-  { state, actions },
-  value = "default message"
+    { state, actions },
+    value = "default message"
 ) => {
-  state._message.text = value;
-  setTimeout(actions.clearMessage, state._message.delay);
+    state._message.text = value;
+    setTimeout(actions.clearMessage, state._message.delay);
 };
 export const clearMessage: Action = ({ state, actions }) => {
-  state._message.text = "";
+    state._message.text = "";
 };
 
 type RoomPair = {
-  user: string;
-  room: string;
+    user: string;
+    room: string;
 };
 export type Rooms = {
-  join: Action<RoomPair, string>;
-  leave: Action<RoomPair>;
-  fiddle: AsyncAction<void, string>;
+    join: Action<RoomPair, string>;
+    leave: Action<RoomPair>;
+    fiddle: AsyncAction<void, string>;
 };
 export const rooms: Rooms = {
-  join({ state }, pair: RoomPair) {
-    const { room, user } = pair;
-    state._server.rooms[room].push(user);
-    return "this";
-  },
-  leave({ state }, pair: RoomPair) {
-    const { room, user } = pair;
-    state._server.rooms[room] = state._server.rooms[room].filter(
-      (entry) => user !== entry
-    );
-  },
-  async fiddle() {
-    await new Promise((resolve) => setTimeout(resolve, 2000));
-    //  return Promise.resolve("the string")
-    return "this is here her thing";
-  }
+    join({ state }, pair: RoomPair) {
+        const { room, user } = pair;
+        state._server.rooms[room].push(user);
+        return "this";
+    },
+    leave({ state }, pair: RoomPair) {
+        const { room, user } = pair;
+        state._server.rooms[room] = state._server.rooms[room].filter(
+            (entry) => user !== entry
+        );
+    },
+    async fiddle() {
+        await new Promise((resolve) => setTimeout(resolve, 1000));
+        //  return Promise.resolve("the string")
+        return "this is here her thing";
+    }
 };

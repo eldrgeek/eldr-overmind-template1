@@ -10,9 +10,9 @@ import App from "./js/App";
 //MW CurrentModule handles the rendering and imports that stule information
 import { CurrentModule } from "./js/CurrentModule";
 if (module.hot) {
-  module.hot.accept(["./js/app", "./js/components/FrontPage"], () => {
-    CurrentModule(App);
-  });
+    module.hot.accept(["./overmind", "./js/App"], () => {
+        CurrentModule(App);
+    });
 }
 
 CurrentModule(App);

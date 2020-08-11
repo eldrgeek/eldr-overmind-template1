@@ -5,6 +5,8 @@
   "keywords": [],
   "main": "src/index.js",
   "dependencies": {
+    "@types/react": "^16.9.46",
+    "@types/react-dom": "^16.9.8",
     "autoprefixer": "9.6.0",
     "overmind-react": "25.1.1",
     "postcss": "7.0.32",
