@@ -1,6 +1,12 @@
 import { CurrentModule, React, useApp } from "./CurrentModule";
-
-export default function JSX(value = "test") {
+type JSXValue = 
+| undefined
+| string 
+| number
+| Array<any>
+| Object;
+export default function JSX({value = "test"}) {
+  // console.log("JSX",value)
   switch (typeof value) {
     case "string":
       return `'${value}'`;
@@ -9,6 +15,7 @@ export default function JSX(value = "test") {
     default:
       if (value === undefined) return "undefined";
       if (value === null) return "null";
+      if(typeof value === 'string') return value
       if (Array.isArray(value)) {
         const list = value.map((val, index) => {
           return (

@@ -10,7 +10,7 @@ const Nothing = () => {
   return "The currrent module is nothing";
 };
 
-const CurrentModule = Element => {
+const CurrentModule = (Element) => {
   const rootElement = document.getElementById("root");
   render(
     <Provider value={app}>
@@ -19,7 +19,6 @@ const CurrentModule = Element => {
     rootElement
   );
 };
-export { CurrentModule, React, useApp };
+export { CurrentModule, React, useApp, app };
 export default CurrentModule;
 CurrentModule(Nothing);
-

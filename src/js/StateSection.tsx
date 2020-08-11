@@ -12,7 +12,7 @@ export default function StateSection({
 
   contents = {};
   Object.keys(state).forEach(key => {
-    console.log(key, section, key.match(section));
+    // console.log(key, section, key.match(section));
     if (key.match(section)) {
       contents[key] = state[key];
     }
@@ -35,7 +35,7 @@ export default function StateSection({
             </div>
             <span className="my-2 mr-3 pl-1 rounded inline-block bg-white w-full">
               {" "}
-              {JSX(contents[key])}
+              {JSX({value: contents[key]})}
             </span>
           </div>
         ))}

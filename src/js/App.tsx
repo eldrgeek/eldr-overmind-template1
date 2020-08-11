@@ -15,7 +15,6 @@ function App() {
     <div className="bg-gray-300 divide-y divide-gray-800">
 <div className="h-20 bg-gray-400 border border-blue-300 hover:border-red-200">
   <h1> this stuff
-    <h2></h2>
   </h1>
 </div>
       <input

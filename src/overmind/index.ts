@@ -5,7 +5,7 @@ import * as actions from "./actions";
 import * as effects from "./effects";
 import { IConfig } from "overmind";
 import { createOvermind } from "overmind";
-
+import overmind from 'overmind'
 export const config = {
   onInitialize,
   state,
@@ -18,6 +18,31 @@ export const app = createOvermind(config, {
   : 'localhost:3031',
 });
 export const useApp = createHook<typeof config>();
+
+app.eventHub.on('action:start', (execution) => {console.log("exec",execution)})
+/*
+namespacePath: Array[0]
+actionId: "setMessage"
+executionId: 38
+actionName: "setMessage"
+operatorId: 0
+isRunning: true
+parentExecution: undefined
+path: Array[0]
+emit: function bound () {}
+send: function bound send() {}
+trackEffects: function bound trackEffects() {}
+getNextOperatorId: function () {}
+flush: function () {}
+getMutationTree: function () {}
+getTrackStateTree: function getTrackStateTree() {}
+onFlush: function onFlush() {}
+scopeValue: function scopeValue() {}
+type: "action"
+value: "whatever"
+*/
+app.eventHub.on('mutations', (executionAndMutations) => {console.log("execMutation", executionAndMutations)})
+app.eventHub.on('getter', (getterDetails) => {console.log("getter", getterDetails)})
 
 declare module "overmind" {
   interface Config extends IConfig<typeof config> {}
